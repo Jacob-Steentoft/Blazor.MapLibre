@@ -5,6 +5,7 @@ namespace Community.Blazor.MapLibre.Models.Feature;
 public class FeatureCollection : IFeature
 {
     [JsonPropertyName("type")]
+    [JsonIgnore]
     public string Type => "FeatureCollection";
 
     [JsonPropertyName("features")]

@@ -8,6 +8,7 @@ public class FeatureFeature : IFeature
     public string? Id { get; set; }
 
     [JsonPropertyName("type")]
+    [JsonIgnore]
     public string Type => "Feature";
 
     [JsonPropertyName("geometry")]
