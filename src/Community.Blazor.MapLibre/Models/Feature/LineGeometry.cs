@@ -5,6 +5,7 @@ namespace Community.Blazor.MapLibre.Models.Feature;
 public class LineGeometry : IGeometry
 {
     [JsonPropertyName("type")]
+    [JsonIgnore]
     public GeometryType Type => GeometryType.Line;
 
     [JsonPropertyName("coordinates")]

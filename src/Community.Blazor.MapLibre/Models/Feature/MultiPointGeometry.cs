@@ -5,6 +5,7 @@ namespace Community.Blazor.MapLibre.Models.Feature;
 public class MultiPointGeometry : IGeometry
 {
     [JsonPropertyName("type")]
+    [JsonIgnore]
     public GeometryType Type => GeometryType.MultiPoint;
 
     /// <summary>

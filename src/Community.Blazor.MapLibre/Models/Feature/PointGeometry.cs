@@ -5,6 +5,7 @@ namespace Community.Blazor.MapLibre.Models.Feature;
 public class PointGeometry : IGeometry
 {
     [JsonPropertyName("type")]
+    [JsonIgnore]
     public GeometryType Type => GeometryType.Point;
 
     [JsonPropertyName("coordinates")]
