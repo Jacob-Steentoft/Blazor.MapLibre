@@ -25,7 +25,7 @@ public class RealWorldScenarioTests
                 {
                     Coordinates = new[] { -73.935242, 40.730610 } // New York
                 },
-                Properties = new Dictionary<string, object>
+                Properties = new Dictionary<string, object?>
                 {
                     { "type", "resource" },
                     { "name", "Resource 1" },
@@ -43,7 +43,7 @@ public class RealWorldScenarioTests
                         new[] { -73.925242, 40.720610 }
                     }
                 },
-                Properties = new Dictionary<string, object>
+                Properties = new Dictionary<string, object?>
                 {
                     { "type", "route" },
                     { "name", "Route A" }
@@ -66,7 +66,7 @@ public class RealWorldScenarioTests
                         }
                     }
                 },
-                Properties = new Dictionary<string, object>
+                Properties = new Dictionary<string, object?>
                 {
                     { "type", "area" },
                     { "name", "Zone 1" }
@@ -103,7 +103,7 @@ public class RealWorldScenarioTests
                 {
                     Coordinates = new[] { -73.935242, 40.730610 }
                 },
-                Properties = new Dictionary<string, object>
+                Properties = new Dictionary<string, object?>
                 {
                     { "category", "landmark" }
                 }
@@ -141,7 +141,7 @@ public class RealWorldScenarioTests
             {
                 Id = "point",
                 Geometry = new PointGeometry { Coordinates = new[] { 0.0, 0.0 } },
-                Properties = new Dictionary<string, object> { { "type", "marker" } }
+                Properties = new Dictionary<string, object?> { { "type", "marker" } }
             },
             new FeatureFeature
             {
@@ -150,7 +150,7 @@ public class RealWorldScenarioTests
                 {
                     Coordinates = new[] { new[] { 0.0, 0.0 }, new[] { 1.0, 1.0 } }
                 },
-                Properties = new Dictionary<string, object> { { "type", "path" } }
+                Properties = new Dictionary<string, object?> { { "type", "path" } }
             },
             new FeatureFeature
             {
@@ -168,7 +168,7 @@ public class RealWorldScenarioTests
                         }
                     }
                 },
-                Properties = new Dictionary<string, object> { { "type", "zone" } }
+                Properties = new Dictionary<string, object?> { { "type", "zone" } }
             },
             new FeatureFeature
             {
@@ -188,7 +188,7 @@ public class RealWorldScenarioTests
                         }
                     }
                 },
-                Properties = new Dictionary<string, object> { { "type", "regions" } }
+                Properties = new Dictionary<string, object?> { { "type", "regions" } }
             }
         };
 
@@ -222,7 +222,7 @@ public class RealWorldScenarioTests
             {
                 Coordinates = [-122.4194, 37.7749]
             },
-            Properties = new Dictionary<string, object>
+            Properties = new Dictionary<string, object?>
             {
                 { "name", "Test Point" }
             }
@@ -291,7 +291,7 @@ public class RealWorldScenarioTests
             {
                 Coordinates = new[] { -122.0 + i * 0.01, 37.0 + i * 0.01 }
             },
-            Properties = new Dictionary<string, object>
+            Properties = new Dictionary<string, object?>
             {
                 { "index", i },
                 { "name", $"Feature {i}" }
@@ -340,7 +340,7 @@ public class RealWorldScenarioTests
                         {
                             Coordinates = new[] { -122.4194, 37.7749 }
                         },
-                        Properties = new Dictionary<string, object>
+                        Properties = new Dictionary<string, object?>
                         {
                             { "name", "Test Location" }
                         }
