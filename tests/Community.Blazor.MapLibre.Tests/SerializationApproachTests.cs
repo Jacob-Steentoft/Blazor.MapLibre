@@ -162,7 +162,7 @@ public class SerializationApproachTests
             {
                 Id = "compare",
                 Geometry = new PointGeometry { Coordinates = new[] { 1.0, 2.0 } },
-                Properties = new Dictionary<string, object>
+                Properties = new Dictionary<string, object?>
                 {
                     { "name", "Test" }
                 }

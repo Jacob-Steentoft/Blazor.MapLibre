@@ -23,7 +23,7 @@ public class FeatureSerializationTests
             {
                 Coordinates = new[] { -122.4194, 37.7749 }
             },
-            Properties = new Dictionary<string, object>
+            Properties = new Dictionary<string, object?>
             {
                 { "name", "San Francisco" },
                 { "population", 873965 }
@@ -87,7 +87,7 @@ public class FeatureSerializationTests
                     {
                         Coordinates = new[] { -122.4194, 37.7749 }
                     },
-                    Properties = new Dictionary<string, object>
+                    Properties = new Dictionary<string, object?>
                     {
                         { "name", "San Francisco" }
                     }
@@ -103,7 +103,7 @@ public class FeatureSerializationTests
                             new[] { -122.4184, 37.7739 }
                         }
                     },
-                    Properties = new Dictionary<string, object>
+                    Properties = new Dictionary<string, object?>
                     {
                         { "name", "Market Street" }
                     }
@@ -167,7 +167,7 @@ public class FeatureSerializationTests
                 {
                     Coordinates = new[] { -122.4194, 37.7749 }
                 },
-                Properties = new Dictionary<string, object>
+                Properties = new Dictionary<string, object?>
                 {
                     { "type", "office" },
                     { "name", "Main Office" }
@@ -374,7 +374,7 @@ public class FeatureSerializationTests
                 {
                     Coordinates = new[] { -122.4194, 37.7749 }
                 },
-                Properties = new Dictionary<string, object>
+                Properties = new Dictionary<string, object?>
                 {
                     { "name", "Test Point" }
                 }

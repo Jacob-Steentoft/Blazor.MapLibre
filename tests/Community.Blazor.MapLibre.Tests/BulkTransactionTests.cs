@@ -61,7 +61,7 @@ public class BulkTransactionTests
                     {
                         Id = "bulk-test",
                         Geometry = new PointGeometry { Coordinates = new[] { 10.0, 20.0 } },
-                        Properties = new Dictionary<string, object>
+                        Properties = new Dictionary<string, object?>
                         {
                             { "name", "Bulk Transaction Test" }
                         }
@@ -188,7 +188,7 @@ public class BulkTransactionTests
                                 }
                             }
                         },
-                        Properties = new Dictionary<string, object>
+                        Properties = new Dictionary<string, object?>
                         {
                             { "area", "test-area" },
                             { "size", 100 },
@@ -277,7 +277,7 @@ public class BulkTransactionTests
                 {
                     Id = $"feature-{i}",
                     Geometry = new PointGeometry { Coordinates = new[] { (double)i, (double)i } },
-                    Properties = new Dictionary<string, object>
+                    Properties = new Dictionary<string, object?>
                     {
                         { "index", i }
                     }

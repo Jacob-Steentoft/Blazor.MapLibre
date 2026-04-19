@@ -29,7 +29,7 @@ public class SetSourceDataTests
                         {
                             Coordinates = new[] { -122.4194, 37.7749 }
                         },
-                        Properties = new Dictionary<string, object>
+                        Properties = new Dictionary<string, object?>
                         {
                             { "name", "San Francisco" }
                         }
@@ -63,7 +63,7 @@ public class SetSourceDataTests
                 {
                     Coordinates = new[] { 10.0, 20.0 }
                 },
-                Properties = new Dictionary<string, object>
+                Properties = new Dictionary<string, object?>
                 {
                     { "category", "landmark" }
                 }
@@ -251,7 +251,7 @@ public class SetSourceDataTests
             {
                 Id = "complex",
                 Geometry = new PointGeometry { Coordinates = new[] { -122.4194, 37.7749 } },
-                Properties = new Dictionary<string, object>
+                Properties = new Dictionary<string, object?>
                 {
                     { "name", "Complex Feature" },
                     { "count", 42 },
@@ -294,7 +294,7 @@ public class SetSourceDataTests
             {
                 Coordinates = new[] { -180.0 + i * 0.36, -90.0 + i * 0.18 }
             },
-            Properties = new Dictionary<string, object>
+            Properties = new Dictionary<string, object?>
             {
                 { "index", i },
                 { "name", $"Feature {i}" }

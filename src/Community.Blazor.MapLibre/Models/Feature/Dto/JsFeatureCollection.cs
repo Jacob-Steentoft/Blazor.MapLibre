@@ -50,7 +50,7 @@ public class JsFeature
     /// </summary>
     public FeatureFeature ToFeatureFeature()
     {
-        var properties = new Dictionary<string, object>();
+        var properties = new Dictionary<string, object?>();
         
         // Convert JsonElement properties to a dictionary if they exist
         if (Properties.HasValue && Properties.Value.ValueKind == JsonValueKind.Object)
@@ -72,7 +72,7 @@ public class JsFeature
     /// <summary>
     /// Helper method to convert JsonElement to appropriate .NET type
     /// </summary>
-    private object ConvertJsonElementToObject(JsonElement element)
+    private object? ConvertJsonElementToObject(JsonElement element)
     {
         return element.ValueKind switch
         {
