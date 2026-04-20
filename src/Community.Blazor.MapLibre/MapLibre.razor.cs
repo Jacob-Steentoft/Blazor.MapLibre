@@ -134,7 +134,7 @@ public partial class MapLibre : ComponentBase, IAsyncDisposable
         if (firstRender)
         {
             await JsRuntime.InvokeAsync<IJSObjectReference>("import",
-                "./_content/Community.Blazor.MapLibre/maplibre-5.3.0.min.js");
+                "./_content/Community.Blazor.MapLibre/maplibre-5.23.0.min.js");
 
             // Import your JavaScript module
             _jsModule = await JsRuntime.InvokeAsync<IJSObjectReference>("import",
@@ -315,10 +315,14 @@ public partial class MapLibre : ComponentBase, IAsyncDisposable
     {
         if (_bulkTransaction is not null)
         {
-            _bulkTransaction.Add("setSourceData", id, source.Data);
+            source.Data.Switch( 
+                feature =>  _bulkTransaction.Add("setSourceData", id, feature), 
+                str => _bulkTransaction.Add("setSourceData", id, str));
             return;
         }
-        await _jsModule.InvokeVoidAsync("setSourceData", MapId, id, source.Data);
+        await source.Data.Match( 
+            feature =>  _jsModule.InvokeVoidAsync("setSourceData", MapId, id, feature), 
+            str => _jsModule.InvokeVoidAsync("setSourceData", MapId, id, str));
     }
 
     /// <summary>
@@ -933,8 +937,8 @@ public partial class MapLibre : ComponentBase, IAsyncDisposable
     /// });
     /// </code>
     /// </example>
-    public async ValueTask<SimpleFeature[]> QuerySourceFeatures(string sourceId, QuerySourceFeatureOptions parameters) =>
-        await _jsModule.InvokeAsync<SimpleFeature[]>("querySourceFeatures", MapId, sourceId, parameters);
+    public async ValueTask<IFeature[]> QuerySourceFeatures(string sourceId, QuerySourceFeatureOptions parameters) =>
+        await _jsModule.InvokeAsync<IFeature[]>("querySourceFeatures", MapId, sourceId, parameters);
 
     /// <summary>
     /// Gets the elevation at a given location, in meters above sea level.

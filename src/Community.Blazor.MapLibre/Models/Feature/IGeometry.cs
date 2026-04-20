@@ -11,9 +11,6 @@ namespace Community.Blazor.MapLibre.Models.Feature;
 [JsonDerivedType(typeof(PolygonGeometry), typeDiscriminator: "Polygon")]
 public interface IGeometry
 {
-    [JsonPropertyName("type")]
-    GeometryType Type { get; }
-
     /// <summary>
     /// Gets the bounding box of the geometry.
     /// </summary>

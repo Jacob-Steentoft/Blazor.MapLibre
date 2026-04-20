@@ -72,7 +72,7 @@ This project should help people working on Blazor projects to use maps more easi
 
 ### Prerequisites
 
-This project is created on .NET 9 so you need to use this or never version to run it.
+This project is created on .NET 8 so you need to use this or never version to run it.
 
 ### Installation
 
@@ -83,7 +83,7 @@ dotnet add package Community.Blazor.MapLibre
 
 Add this to head of your file to load the css for the maps.
 ```html
-<link href="_content/Community.Blazor.MapLibre/maplibre-5.3.0.min.css" rel="stylesheet" />
+<link href="_content/Community.Blazor.MapLibre/maplibre-5.23.0.min.css" rel="stylesheet" />
 ```
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
