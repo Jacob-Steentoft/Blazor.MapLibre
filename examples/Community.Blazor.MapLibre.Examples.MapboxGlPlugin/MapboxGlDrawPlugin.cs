@@ -1,5 +1,4 @@
 using Community.Blazor.MapLibre.Models.Feature;
-using Community.Blazor.MapLibre.Models.Feature.Dto;
 using Microsoft.JSInterop;
 
 namespace Community.Blazor.MapLibre.Examples.MapboxGlPlugin;
@@ -74,10 +73,9 @@ public class MapboxGlDrawPlugin : IMapLibrePlugin
     }
     
     [JSInvokable]
-    public async Task OnDrawUpdateCallback(JsFeatureCollection jsFeatureCollection, string mapStatus)
+    public async Task OnDrawUpdateCallback(FeatureCollection featureCollection, string mapStatus)
     {
-        var featureCollection = jsFeatureCollection.ToFeatureCollection();
-        if (OnDrawUpdate != null)
+        if (OnDrawUpdate is not null)
         {
             await OnDrawUpdate((featureCollection, mapStatus));
         }

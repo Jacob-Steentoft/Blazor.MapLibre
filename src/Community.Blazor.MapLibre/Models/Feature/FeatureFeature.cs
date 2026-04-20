@@ -13,7 +13,8 @@ public class FeatureFeature : IFeature
     public required IGeometry Geometry { get; set; }
 
     [JsonPropertyName("properties")]
-    public Dictionary<string, object?>? Properties { get; set; }
+    [JsonConverter(typeof(ObjectConverter))]
+    public Dictionary<string, object?> Properties { get; set; } = [];
 
     /// <summary>
     /// <inheritdoc/>

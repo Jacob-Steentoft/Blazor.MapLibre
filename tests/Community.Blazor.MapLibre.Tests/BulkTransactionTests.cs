@@ -1,8 +1,8 @@
 using System.Text.Json;
+using AwesomeAssertions;
 using Community.Blazor.MapLibre.Models;
 using Community.Blazor.MapLibre.Models.Feature;
 using Community.Blazor.MapLibre.Models.Sources;
-using FluentAssertions;
 using Xunit;
 
 namespace Community.Blazor.MapLibre.Tests;
@@ -134,13 +134,21 @@ public class BulkTransactionTests
         {
             Data = new FeatureCollection
             {
-                Features = new List<IFeature>
-                {
+                Features =
+                [
                     new FeatureFeature
                     {
-                        Geometry = new PointGeometry { Coordinates = new[] { 0.0, 0.0 } }
-                    }
-                }
+                        Geometry = new PointGeometry
+                        {
+                            Coordinates =
+                            [
+                                0.0,
+                                0.0,
+                            ]
+                        },
+                        Id = "test",
+                    },
+                ]
             }
         };
 
@@ -188,7 +196,7 @@ public class BulkTransactionTests
                                 }
                             }
                         },
-                        Properties = new Dictionary<string, object?>
+                        Properties = new ()
                         {
                             { "area", "test-area" },
                             { "size", 100 },
@@ -269,18 +277,15 @@ public class BulkTransactionTests
         // Arrange
         var transaction = new BulkTransaction();
 
-        for (int i = 0; i < 50; i++)
+        for (var i = 0; i < 50; i++)
         {
             var source = new GeoJsonSource
             {
                 Data = new FeatureFeature
                 {
                     Id = $"feature-{i}",
-                    Geometry = new PointGeometry { Coordinates = new[] { (double)i, (double)i } },
-                    Properties = new Dictionary<string, object?>
-                    {
-                        { "index", i }
-                    }
+                    Geometry = new PointGeometry { Coordinates = [ i, i ] },
+                    Properties = new() { { "index", i } }
                 }
             };
 

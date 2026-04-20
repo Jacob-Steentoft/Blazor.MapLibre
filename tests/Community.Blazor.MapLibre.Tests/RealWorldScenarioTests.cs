@@ -1,7 +1,7 @@
 using System.Text.Json;
+using AwesomeAssertions;
 using Community.Blazor.MapLibre.Models.Feature;
 using Community.Blazor.MapLibre.Models.Sources;
-using FluentAssertions;
 using Xunit;
 
 namespace Community.Blazor.MapLibre.Tests;
@@ -23,9 +23,9 @@ public class RealWorldScenarioTests
                 Id = "resource1",
                 Geometry = new PointGeometry
                 {
-                    Coordinates = new[] { -73.935242, 40.730610 } // New York
+                    Coordinates = [-73.935242, 40.730610] // New York
                 },
-                Properties = new Dictionary<string, object?>
+                Properties = new ()
                 {
                     { "type", "resource" },
                     { "name", "Resource 1" },
@@ -37,13 +37,13 @@ public class RealWorldScenarioTests
                 Id = "resource2",
                 Geometry = new LineGeometry
                 {
-                    Coordinates = new[]
-                    {
-                        new[] { -73.935242, 40.730610 },
-                        new[] { -73.925242, 40.720610 }
-                    }
+                    Coordinates =
+                    [
+                        [-73.935242, 40.730610],
+                        [-73.925242, 40.720610]
+                    ]
                 },
-                Properties = new Dictionary<string, object?>
+                Properties = new ()
                 {
                     { "type", "route" },
                     { "name", "Route A" }
@@ -54,19 +54,18 @@ public class RealWorldScenarioTests
                 Id = "resource3",
                 Geometry = new PolygonGeometry
                 {
-                    Coordinates = new[]
-                    {
-                        new[]
-                        {
-                            new[] { -73.935242, 40.730610 },
-                            new[] { -73.925242, 40.730610 },
-                            new[] { -73.925242, 40.720610 },
-                            new[] { -73.935242, 40.720610 },
-                            new[] { -73.935242, 40.730610 }
-                        }
-                    }
+                    Coordinates =
+                    [
+                        [
+                            [-73.935242, 40.730610],
+                            [-73.925242, 40.730610],
+                            [-73.925242, 40.720610],
+                            [-73.935242, 40.720610],
+                            [-73.935242, 40.730610]
+                        ]
+                    ]
                 },
-                Properties = new Dictionary<string, object?>
+                Properties = new ()
                 {
                     { "type", "area" },
                     { "name", "Zone 1" }
@@ -101,9 +100,9 @@ public class RealWorldScenarioTests
                 Id = "resource1",
                 Geometry = new PointGeometry
                 {
-                    Coordinates = new[] { -73.935242, 40.730610 }
+                    Coordinates = [-73.935242, 40.730610]
                 },
-                Properties = new Dictionary<string, object?>
+                Properties = new ()
                 {
                     { "category", "landmark" }
                 }
@@ -140,55 +139,54 @@ public class RealWorldScenarioTests
             new FeatureFeature
             {
                 Id = "point",
-                Geometry = new PointGeometry { Coordinates = new[] { 0.0, 0.0 } },
-                Properties = new Dictionary<string, object?> { { "type", "marker" } }
+                Geometry = new PointGeometry { Coordinates = [0.0, 0.0] },
+                Properties = new () { { "type", "marker" } }
             },
             new FeatureFeature
             {
                 Id = "line",
                 Geometry = new LineGeometry
                 {
-                    Coordinates = new[] { new[] { 0.0, 0.0 }, new[] { 1.0, 1.0 } }
+                    Coordinates = [[0.0, 0.0], [1.0, 1.0]]
                 },
-                Properties = new Dictionary<string, object?> { { "type", "path" } }
+                Properties = new () { { "type", "path" } }
             },
             new FeatureFeature
             {
                 Id = "polygon",
                 Geometry = new PolygonGeometry
                 {
-                    Coordinates = new[]
-                    {
-                        new[] {
-                            new[] { 0.0, 0.0 },
-                            new[] { 1.0, 0.0 },
-                            new[] { 1.0, 1.0 },
-                            new[] { 0.0, 1.0 },
-                            new[] { 0.0, 0.0 }
-                        }
-                    }
+                    Coordinates =
+                    [
+                        [
+                            [0.0, 0.0],
+                            [1.0, 0.0],
+                            [1.0, 1.0],
+                            [0.0, 1.0],
+                            [0.0, 0.0]
+                        ]
+                    ]
                 },
-                Properties = new Dictionary<string, object?> { { "type", "zone" } }
+                Properties = new () { { "type", "zone" } }
             },
             new FeatureFeature
             {
                 Id = "multipolygon",
                 Geometry = new MultiPolygonGeometry
                 {
-                    Coordinates = new[]
-                    {
-                        new[]
-                        {
-                            new[] {
-                                new[] { 0.0, 0.0 },
-                                new[] { 1.0, 0.0 },
-                                new[] { 1.0, 1.0 },
-                                new[] { 0.0, 0.0 }
-                            }
-                        }
-                    }
+                    Coordinates =
+                    [
+                        [
+                            [
+                                [0.0, 0.0],
+                                [1.0, 0.0],
+                                [1.0, 1.0],
+                                [0.0, 0.0]
+                            ]
+                        ]
+                    ]
                 },
-                Properties = new Dictionary<string, object?> { { "type", "regions" } }
+                Properties = new () { { "type", "regions" } }
             }
         };
 
@@ -222,7 +220,7 @@ public class RealWorldScenarioTests
             {
                 Coordinates = [-122.4194, 37.7749]
             },
-            Properties = new Dictionary<string, object?>
+            Properties = new () 
             {
                 { "name", "Test Point" }
             }
@@ -259,9 +257,9 @@ public class RealWorldScenarioTests
                 Id = "no-props",
                 Geometry = new PointGeometry
                 {
-                    Coordinates = new[] { 0.0, 0.0 }
+                    Coordinates = [0.0, 0.0]
                 },
-                Properties = null
+                Properties = []
             }
         };
 
@@ -289,9 +287,9 @@ public class RealWorldScenarioTests
             Id = $"feature{i}",
             Geometry = new PointGeometry
             {
-                Coordinates = new[] { -122.0 + i * 0.01, 37.0 + i * 0.01 }
+                Coordinates = [-122.0 + i * 0.01, 37.0 + i * 0.01]
             },
-            Properties = new Dictionary<string, object?>
+            Properties = new ()
             {
                 { "index", i },
                 { "name", $"Feature {i}" }
@@ -331,21 +329,18 @@ public class RealWorldScenarioTests
         {
             Data = new FeatureCollection
             {
-                Features = new List<IFeature>
-                {
+                Features =
+                [
                     new FeatureFeature
                     {
                         Id = "test",
                         Geometry = new PointGeometry
                         {
-                            Coordinates = new[] { -122.4194, 37.7749 }
+                            Coordinates = [-122.4194, 37.7749]
                         },
-                        Properties = new Dictionary<string, object?>
-                        {
-                            { "name", "Test Location" }
-                        }
-                    }
-                }
+                        Properties = new() { { "name", "Test Location" } }
+                    },
+                ]
             }
         };
 

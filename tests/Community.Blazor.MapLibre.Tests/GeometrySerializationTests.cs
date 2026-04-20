@@ -1,6 +1,6 @@
 using System.Text.Json;
+using AwesomeAssertions;
 using Community.Blazor.MapLibre.Models.Feature;
-using FluentAssertions;
 using Xunit;
 
 namespace Community.Blazor.MapLibre.Tests;

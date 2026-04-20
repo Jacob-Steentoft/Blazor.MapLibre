@@ -1,7 +1,7 @@
 using System.Text.Json;
+using AwesomeAssertions;
 using Community.Blazor.MapLibre.Models.Feature;
 using Community.Blazor.MapLibre.Models.Sources;
-using FluentAssertions;
 using Xunit;
 
 namespace Community.Blazor.MapLibre.Tests;
@@ -21,9 +21,9 @@ public class FeatureSerializationTests
             Id = "feature1",
             Geometry = new PointGeometry
             {
-                Coordinates = new[] { -122.4194, 37.7749 }
+                Coordinates = [-122.4194, 37.7749]
             },
-            Properties = new Dictionary<string, object?>
+            Properties = new ()
             {
                 { "name", "San Francisco" },
                 { "population", 873965 }
@@ -78,37 +78,37 @@ public class FeatureSerializationTests
         // Arrange
         var featureCollection = new FeatureCollection
         {
-            Features = new List<IFeature>
-            {
+            Features =
+            [
                 new FeatureFeature
                 {
                     Id = "point1",
                     Geometry = new PointGeometry
                     {
-                        Coordinates = new[] { -122.4194, 37.7749 }
+                        Coordinates = [-122.4194, 37.7749]
                     },
-                    Properties = new Dictionary<string, object?>
+                    Properties = new()
                     {
                         { "name", "San Francisco" }
-                    }
+                    },
                 },
                 new FeatureFeature
                 {
                     Id = "line1",
                     Geometry = new LineGeometry
                     {
-                        Coordinates = new[]
-                        {
-                            new[] { -122.4194, 37.7749 },
-                            new[] { -122.4184, 37.7739 }
-                        }
+                        Coordinates =
+                        [
+                            [-122.4194, 37.7749],
+                            [-122.4184, 37.7739],
+                        ]
                     },
-                    Properties = new Dictionary<string, object?>
+                    Properties = new ()
                     {
                         { "name", "Market Street" }
                     }
-                }
-            }
+                },
+            ]
         };
 
         // Act
@@ -165,9 +165,9 @@ public class FeatureSerializationTests
                 Id = "resource1",
                 Geometry = new PointGeometry
                 {
-                    Coordinates = new[] { -122.4194, 37.7749 }
+                    Coordinates = [-122.4194, 37.7749]
                 },
-                Properties = new Dictionary<string, object?>
+                Properties = new ()
                 {
                     { "type", "office" },
                     { "name", "Main Office" }
@@ -245,8 +245,13 @@ public class FeatureSerializationTests
         {
             Geometry = new PointGeometry
             {
-                Coordinates = new[] { -122.4194, 37.7749 }
-            }
+                Coordinates = new[]
+                {
+                    -122.4194,
+                    37.7749
+                }
+            },
+            Id = "test"
         };
 
         // Act
@@ -270,15 +275,21 @@ public class FeatureSerializationTests
                 {
                     Geometry = new PointGeometry
                     {
-                        Coordinates = new[] { -122.4194, 37.7749 }
-                    }
+                        Coordinates = new[]
+                        {
+                            -122.4194,
+                            37.7749
+                        }
+                    },
+                    Id = "test"
                 },
                 new FeatureFeature
                 {
                     Geometry = new PointGeometry
                     {
                         Coordinates = new[] { -122.4184, 37.7739 }
-                    }
+                    },
+                    Id = "test2"
                 }
             }
         };
@@ -370,14 +381,8 @@ public class FeatureSerializationTests
             Data = new FeatureFeature
             {
                 Id = "test-feature",
-                Geometry = new PointGeometry
-                {
-                    Coordinates = new[] { -122.4194, 37.7749 }
-                },
-                Properties = new Dictionary<string, object?>
-                {
-                    { "name", "Test Point" }
-                }
+                Geometry = new PointGeometry { Coordinates = [-122.4194, 37.7749] },
+                Properties = new() { { "name", "Test Point" } }
             }
         };
 
@@ -412,7 +417,15 @@ public class FeatureSerializationTests
         // Arrange
         var feature = new FeatureFeature
         {
-            Geometry = new PointGeometry { Coordinates = new[] { 0.0, 0.0 } }
+            Geometry = new PointGeometry
+            {
+                Coordinates = new[]
+                {
+                    0.0,
+                    0.0
+                }
+            },
+            Id = "test"
         };
 
         // Act - OneOf should support implicit conversion from IFeature

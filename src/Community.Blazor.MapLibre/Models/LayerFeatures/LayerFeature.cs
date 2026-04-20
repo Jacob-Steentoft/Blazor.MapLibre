@@ -1,4 +1,5 @@
 ﻿using System.Text.Json.Serialization;
+using Community.Blazor.MapLibre.Converter;
 
 namespace Community.Blazor.MapLibre.Models.LayerFeatures;
 
@@ -10,13 +11,14 @@ public abstract class LayerFeature
 	// TODO: To be added when Layer works for deserialization and serialization
 	// [JsonPropertyName("layer")]
 	// public required Layer Layer { get; init; }
-	
+
 	[JsonPropertyName("source")]
 	public required string Source { get; set; }
-	
+
 	[JsonPropertyName("state")]
-	public Dictionary<string,object> State { get; set; } = [];
-	
+	[JsonConverter(typeof(ObjectConverter))]
+	public Dictionary<string, object?> State { get; set; } = [];
+
 	/// <summary>
 	/// Gets the bounding box of the geometry.
 	/// </summary>

@@ -1,8 +1,7 @@
 using System.Text.Json;
-using System.Text.Json.Nodes;
+using AwesomeAssertions;
 using Community.Blazor.MapLibre.Models.Feature;
 using Community.Blazor.MapLibre.Models.Sources;
-using FluentAssertions;
 using Xunit;
 
 namespace Community.Blazor.MapLibre.Tests;
@@ -161,11 +160,8 @@ public class SerializationApproachTests
             Data = new FeatureFeature
             {
                 Id = "compare",
-                Geometry = new PointGeometry { Coordinates = new[] { 1.0, 2.0 } },
-                Properties = new Dictionary<string, object?>
-                {
-                    { "name", "Test" }
-                }
+                Geometry = new PointGeometry { Coordinates = [1.0, 2.0] },
+                Properties = new() { { "name", "Test" } }
             }
         };
 

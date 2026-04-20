@@ -1,7 +1,7 @@
 using System.Text.Json;
+using AwesomeAssertions;
 using Community.Blazor.MapLibre.Models.Feature;
 using Community.Blazor.MapLibre.Models.Sources;
-using FluentAssertions;
 using Xunit;
 
 namespace Community.Blazor.MapLibre.Tests;
@@ -20,21 +20,18 @@ public class SetSourceDataTests
         {
             Data = new FeatureCollection
             {
-                Features = new List<IFeature>
-                {
+                Features =
+                [
                     new FeatureFeature
                     {
                         Id = "point1",
                         Geometry = new PointGeometry
                         {
-                            Coordinates = new[] { -122.4194, 37.7749 }
+                            Coordinates = [-122.4194, 37.7749]
                         },
-                        Properties = new Dictionary<string, object?>
-                        {
-                            { "name", "San Francisco" }
-                        }
+                        Properties = new() { { "name", "San Francisco" } }
                     }
-                }
+                ]
             }
         };
 
@@ -61,12 +58,9 @@ public class SetSourceDataTests
                 Id = "single-point",
                 Geometry = new PointGeometry
                 {
-                    Coordinates = new[] { 10.0, 20.0 }
+                    Coordinates = [10.0, 20.0]
                 },
-                Properties = new Dictionary<string, object?>
-                {
-                    { "category", "landmark" }
-                }
+                Properties = new() { { "category", "landmark" } }
             }
         };
 
@@ -113,7 +107,15 @@ public class SetSourceDataTests
                 {
                     new FeatureFeature
                     {
-                        Geometry = new PointGeometry { Coordinates = new[] { 0.0, 0.0 } }
+                        Geometry = new PointGeometry
+                        {
+                            Coordinates = new[]
+                            {
+                                0.0,
+                                0.0
+                            }
+                        },
+                        Id = "test",
                     }
                 }
             },
@@ -225,7 +227,7 @@ public class SetSourceDataTests
             {
                 Id = "no-props",
                 Geometry = new PointGeometry { Coordinates = new[] { 0.0, 0.0 } },
-                Properties = null
+                Properties = []
             }
         };
 
@@ -250,8 +252,8 @@ public class SetSourceDataTests
             Data = new FeatureFeature
             {
                 Id = "complex",
-                Geometry = new PointGeometry { Coordinates = new[] { -122.4194, 37.7749 } },
-                Properties = new Dictionary<string, object?>
+                Geometry = new PointGeometry { Coordinates = [-122.4194, 37.7749] },
+                Properties = new ()
                 {
                     { "name", "Complex Feature" },
                     { "count", 42 },
@@ -290,15 +292,8 @@ public class SetSourceDataTests
         var features = Enumerable.Range(0, 1000).Select(i => new FeatureFeature
         {
             Id = $"feature-{i}",
-            Geometry = new PointGeometry
-            {
-                Coordinates = new[] { -180.0 + i * 0.36, -90.0 + i * 0.18 }
-            },
-            Properties = new Dictionary<string, object?>
-            {
-                { "index", i },
-                { "name", $"Feature {i}" }
-            }
+            Geometry = new PointGeometry { Coordinates = [ -180.0 + i * 0.36, -90.0 + i * 0.18 ] },
+            Properties = new() { { "index", i }, { "name", $"Feature {i}" } }
         }).Cast<IFeature>().ToList();
 
         var source = new GeoJsonSource
@@ -383,7 +378,15 @@ public class SetSourceDataTests
                 {
                     new FeatureFeature
                     {
-                        Geometry = new PointGeometry { Coordinates = new[] { 0.0, 0.0 } }
+                        Geometry = new PointGeometry
+                        {
+                            Coordinates = new[]
+                            {
+                                0.0,
+                                0.0
+                            }
+                        },
+                        Id = "test"
                     }
                 }
             },

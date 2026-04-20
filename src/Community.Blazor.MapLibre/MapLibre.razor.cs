@@ -913,7 +913,7 @@ public partial class MapLibre : ComponentBase, IAsyncDisposable
         await _jsModule.InvokeAsync<object[]>("queryRenderedFeatures", MapId, query, options);
 
     /// <summary>
-    /// Returns an array of <see cref="SimpleFeature"/> objects representing features within the specified vector tile or GeoJSON source that satisfy the query parameters.
+    /// Returns an array of <see cref="IFeature"/> objects representing features within the specified vector tile or GeoJSON source that satisfy the query parameters.
     /// </summary>
     /// <param name="sourceId">
     /// The ID of the vector tile or GeoJSON source to query.
@@ -922,7 +922,7 @@ public partial class MapLibre : ComponentBase, IAsyncDisposable
     /// (Optional) Additional options to filter source features, such as <c>sourceLayer</c> or <c>filter</c>.
     /// </param>
     /// <returns>
-    /// An array of <see cref="SimpleFeature"/> objects. These include all features that match the query parameters,
+    /// An array of <see cref="IFeature"/> objects. These include all features that match the query parameters,
     /// regardless of whether they are currently rendered by the style.
     /// </returns>
     /// <remarks>
